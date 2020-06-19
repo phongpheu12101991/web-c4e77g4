@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="project.css" />
+  </head>
+  <body>
+    <div id="cover-picture">COVER PICTURE</div>
+    <div id="taskbar">
+      <a href="home.html"><div id="logo">LOGO</div></a>
+      <div class="search">SEARCH</div>
+      <a href="addfood.html"><div id="add">ADD</div></a>
+      <div id="log-in">LOG IN</div>
+    </div>
+    <br />
+    <div class="homemain">
+      <h1>Tên món:</h1>
+      <input type="text" id="namefood" />
+      <h1>Nguyên liệu:</h1>
+      <!-- <button id="addnglieu">Thêm dòng</button> -->
+      <!-- <div id="nguyenlieu"></div> -->
+      <form id="form-add">
+        <input
+          type="text"
+          name="themmon"
+          placeholder="Thêm nguyên liệu"
+          id="inputnl"
+        />
+        <button id="buttonaddnl">Add</button>
+      </form>
+      <ul id="list"></ul>
+      <h1>Cách làm:</h1>
+      <!-- <button id="thembuoc">Thêm bước</button>
+      <div id="cachlam">
+        <label for="">- Bước 1:</label>
+        <input type="text" id="buoc1" />
+      </div> -->
+      <form id="form-do">
+        <input
+          type="text"
+          name="thembuoc"
+          placeholder="Thêm bước"
+          id="inputcl"
+        />
+        <button id="buttonaddcl">Add</button>
+      </form>
+      <ul id="listcl"></ul>
+      <h1>Ảnh món ăn</h1>
+      <input type="text" id="addanh" />
+      <h3>**Copy link hoặc đường dẫn đến ảnh</h3>
+      <!-- <button id="themanh">Thêm ảnh</button> -->
+      <!-- <form action="" method="POST" enctype="multipart/form-data">
+        <input type="file" name="userFile" /><br />
+        <input type="submit" name="upload_btn" value="upload" />
+      </form> -->
+
+      <hr />
+      <button id="okadd">Xác nhận</button>
+    </div>
+
+    <div id="crnewfoods"></div>
+    <script src="project.js"></script>
+  </body>
+</html>
