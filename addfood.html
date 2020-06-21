@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="project.css" />
+    <script
+      src="https://kit.fontawesome.com/9d889a3143.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="cover-picture">COVER PICTURE</div>
+    <div id="taskbar">
+      <a href="home.html"><div id="logo">LOGO</div></a>
+      <div id="searchbutton" class="box">
+        <div class="container-1">
+          <span class="icon"><i class="fas fa-search"></i></span>
+          <input type="search" id="search" placeholder="Search..." />
+        </div>
+      </div>
+      <a href="addfood.html"><div id="add">ADD</div></a>
+      <a href="login.html"><div id="log-in">LOG IN</div></a>
+    </div>
+    <br />
+    <div class="homemain hm2">
+      <h1>Tên món:</h1>
+      <input type="text" id="namefood" placeholder="Thêm tên món" />
+      <h1>Nguyên liệu:</h1>
+      <form id="form-add">
+        <input
+          type="text"
+          name="themmon"
+          placeholder="Thêm nguyên liệu"
+          id="inputnl"
+        />
+        <button id="buttonaddnl">Add</button>
+      </form>
+      <ul id="list"></ul>
+      <h1>Cách làm:</h1>
+      <form id="form-do">
+        <input
+          type="text"
+          name="thembuoc"
+          placeholder="Thêm bước"
+          id="inputcl"
+        />
+        <button id="buttonaddcl">Add</button>
+      </form>
+      <ul id="listcl"></ul>
+      <br />
+      <h1>Ảnh món ăn</h1>
+      <input type="text" id="addanh" />
+      <h4 style="color: blue;">**Copy link hoặc đường dẫn đến ảnh</h4>
+      <hr />
+      <br />
+      <div id="okadd">Hoàn thành !</div>
+    </div>
+    <script src="project.js"></script>
+  </body>
+</html>

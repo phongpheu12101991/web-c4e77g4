@@ -1,11 +1,12 @@
+
 let allfoods = [
   {
     foodname: "Trà đào cam sả",
     foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
     foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
+      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><hr><li>Đường nước: 30ml</li><hr><li>Trà: 200ml</li><hr><li>Siro đào: 20ml</li><hr><li>Siro sả: 10ml</li><hr><li>Nước cam: 100ml</li><hr><li>Sả: 1 cây</li><hr><li>Đá: vừa đủ</li><hr></ul>',
     foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
+      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><hr><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><hr><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><hr><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li><hr></ul>',
     foodtime: new Date(2019, 10, 24, 16, 18, 20),
     creator: `phong`,
     rate: { phong: `3` },
@@ -48,7 +49,8 @@ let allfoods = [
     foodid: 3,
   },
 ];
-
+allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
+console.log(allfoods);
 let login = document.getElementById("log-in");
 let addfood = document.getElementById("add");
 
@@ -126,7 +128,8 @@ function onSubmitevent(event) {
   let nlcanadd = formaddnl.themmon.value;
 
   let li = document.createElement("li");
-  li.innerHTML = `<input type="text" name="themmon" value="${nlcanadd}" /><button id="del">Delete</button>`;
+  li.innerHTML = `_ <input type="text" name="themmon" value="${nlcanadd}" /><button id="del">Delete</button>`;
+  li.className = "liinput";
   ul.appendChild(li);
   formaddnl.themmon.value = "";
   //tao li ben chi tiet
@@ -154,7 +157,8 @@ function onSubmitevent2(event) {
 
   let clcanadd = formaddcl.thembuoc.value;
   let li = document.createElement("li");
-  li.innerHTML = `<input type="text" name="thembuoc" value="${clcanadd}" /><button id="del">Delete</button>`;
+  li.innerHTML = `_ <input type="text" name="thembuoc" value="${clcanadd}" /><button id="del">Delete</button>`;
+  li.className = "liinput";
   ulcl.appendChild(li);
   arrulcl.push(clcanadd);
   formaddcl.thembuoc.value = "";
@@ -188,13 +192,13 @@ function creatfood() {
   // console.log(arrulnl);
   let xx = `<ul id="nl${allfoods.length}">`;
   for (let i = 0; i < arrulnl.length; i++) {
-    xx = xx + `<li>${arrulnl[i]}</li>`;
+    xx = xx + `<li>${arrulnl[i]}</li><hr>`;
   }
   let xxx = xx + `</ul>`;
 
   let yy = `<ul id="cl${allfoods.length}">`;
   for (let i = 0; i < arrulcl.length; i++) {
-    yy = yy + `<li>${arrulcl[i]}</li>`;
+    yy = yy + `<li>${arrulcl[i]}</li><hr>`;
   }
   let yyy = yy + `</ul>`;
 
@@ -220,7 +224,6 @@ function creatfood() {
     foodid: allfoods.length,
   });
   console.log(allfoods[allfoods.length - 1]);
-  localStorage.setItem("saveallfoods", `${allfoods}`);
+  localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
+  allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
 }
-// allfoods = localStorage.getItem("saveallfoods");
-console.log(localStorage.getItem("saveallfoods"));
