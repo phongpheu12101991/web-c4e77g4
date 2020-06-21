@@ -1,0 +1,82 @@
+.carousel-wrapper {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200vh;
+}
+.img-item {
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 100vh;
+  width: 100%;
+}
+.img-item2 {
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 100vh;
+  width: 100%;
+}
+.img-item3 {
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 100vh;
+  width: 100%;
+}
+.title {
+  font-size: large;
+  color: aquamarine;
+}
+.wrapper {
+  position: relative;
+  width: 200vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.banner {
+  color: white;
+  width: 30vh !important;
+  font-size: 70px;
+  z-index: 10;
+  background-color: red;
+  left: 85vh;
+  height: 25vh !important;
+  margin-top: 35vh;
+  margin-left: 20vh;
+  font-family: "Alfa Slab One", cursive;
+  padding-top: 15px;
+  text-align: center;
+  line-height: 11vh;
+  margin: 10px auto;
+}
+.button {
+  z-index: 20;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #000000;
+  height: 48px;
+  font-family: "SVN-Proxima Nova", sans-serif !important;
+  width: 200px;
+  margin: 10px auto;
+}
+.quotes {
+  z-index: 30;
+  font-size: 40px;
+  margin: 10px auto;
+  color: #ffffff;
+  font-family: "Architects Daughter", cursive;
+}
+.items {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
