@@ -89,28 +89,7 @@ function onClickEvent() {
 
 account = JSON.parse(localStorage.getItem("account"));
 console.log(account);
-/// đăng ký tài khoản
 
-/// đăng nhập tài khoản
-// let id = document.getElementById("inputname");
-// let password = document.getElementById("inputpassword");
-// let login1 = document.getElementById("submitlogin");
-// login1.addEventListener("click", login);
-// function login() {
-//   for (let i = 0; i <= account.length - 1; i++) {
-//     if (
-//       id.value == account[i].username &&
-//       password.value == account[i].password
-//     ) {
-//       alert("log-in success");
-//       localStorage.setItem("logged", `${account[i].username}`);
-//       // id.value = "";
-//       // password.value = "";
-//       location.replace("home.html");
-//       break;
-//     }
-//   }
-// }
 let nowuser = localStorage.getItem("logged");
 let addfood = document.getElementById("add");
 let login = document.getElementById("log-in");
@@ -127,3 +106,14 @@ if (nowuser == "") {
 function nologin() {
   alert("Ban can dang nhap");
 }
+
+function registenter(event) {
+  if (event.keyCode === 13) {
+    submitregist.click();
+  }
+}
+
+newname.addEventListener("keypress", registenter);
+inputEmail.addEventListener("keypress", registenter);
+inputPassword.addEventListener("keypress", registenter);
+inputPassword2.addEventListener("keypress", registenter);
