@@ -12,6 +12,9 @@ let allfoods = [
     creator: `phong`,
     rate: { phong: `3` },
     foodid: 0,
+    views: 0,
+    like: [],
+    dislike: [],
   },
   {
     foodname: "Trà quế cam mật ong",
@@ -24,6 +27,9 @@ let allfoods = [
     creator: `phong`,
     rate: { phong: `3` },
     foodid: 1,
+    views: 0,
+    like: [],
+    dislike: [],
   },
   {
     foodname: "Trà táo bạc hà",
@@ -36,6 +42,9 @@ let allfoods = [
     creator: `phong`,
     rate: { phong: `3` },
     foodid: 2,
+    views: 0,
+    like: [],
+    dislike: [],
   },
   {
     foodname: "Trà hạt sen lá nếp",
@@ -48,9 +57,20 @@ let allfoods = [
     creator: `phong`,
     rate: { phong: `3` },
     foodid: 3,
+    views: 0,
+    like: [],
+    dislike: [],
   },
 ];
 
+//Lấy food từ local, chuyển lại định dạng time
+if (localStorage.getItem("saveallfoods") !== null) {
+  allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
+}
+for (let x of allfoods) {
+  x.foodtime = new Date(x.foodtime.split(" "));
+}
+// localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
 // allfoods = localStorage.getItem("saveallfoods");
 //mảng chứa tài khoản
 let account = [
@@ -59,18 +79,21 @@ let account = [
     password: `123`,
     email: `phong@gmail.com`,
     type: `admin`,
+    userid: 0,
   },
   {
     username: `duong`,
     password: `123`,
     email: `duong@gmail.com`,
     type: `admin`,
+    userid: 1,
   },
   {
     username: `quan`,
     password: `123`,
     email: `quan@gmail.com`,
     type: `admin`,
+    userid: 2,
   },
 ];
 
@@ -89,12 +112,27 @@ let newid1 = document.getElementById("newid1");
 let newid2 = document.getElementById("newid2");
 let newid3 = document.getElementById("newid3");
 let newid4 = document.getElementById("newid4");
+let newtime1 = document.getElementById("newtime1");
+let newtime2 = document.getElementById("newtime2");
+let newtime3 = document.getElementById("newtime3");
+let newtime4 = document.getElementById("newtime4");
+
+let newview1 = document.getElementById("newview1");
+let newview2 = document.getElementById("newview2");
+let newview3 = document.getElementById("newview3");
+let newview4 = document.getElementById("newview4");
+let newlike1 = document.getElementById("newlike1");
+let newlike2 = document.getElementById("newlike2");
+let newlike3 = document.getElementById("newlike3");
+let newlike4 = document.getElementById("newlike4");
 
 let allmininewname = [newname1, newname2, newname3, newname4];
 let allmininewimage = [newimage1, newimage2, newimage3, newimage4];
 let allminiid = [newid1, newid2, newid3, newid4];
-
-localStorage.setItem("logged", `phong`);
+let allminitime = [newtime1, newtime2, newtime3, newtime4];
+let allminiview = [newview1, newview2, newview3, newview4];
+let allminilike = [newlike1, newlike2, newlike3, newlike4];
+// localStorage.setItem("logged", `phong`);
 let nowuser = localStorage.getItem("logged");
 
 if (nowuser !== "") {
@@ -119,6 +157,7 @@ function boxnewfood() {
   xeptime.sort(function (a, b) {
     return b - a;
   });
+  console.log(xeptime);
   for (let n = 0; n < xeptime.length; n++) {
     for (let i = 0; i < allfoods.length; i++) {
       if (allfoods[i].foodtime == xeptime[n]) {
@@ -133,6 +172,33 @@ function boxnewfood() {
     }")`;
     allmininewname[x].innerText = allfoods[thutu[x]].foodname;
     allminiid[x].innerText = allfoods[thutu[x]].foodid;
+    allminiview[x].innerText = `${allfoods[thutu[x]].views} lượt xem`;
+    allminilike[x].innerHTML = `<i class="fas fa-heart"></i> ${
+      allfoods[thutu[x]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+      allfoods[thutu[x]].dislike.length
+    }`;
+    // tính giờ chênh lệch:
+    let calcutime = (new Date() - allfoods[thutu[x]].foodtime) / (1000 * 60);
+    if (calcutime > 60 * 24 * 365) {
+      allminitime[x].innerText = `${Math.floor(
+        calcutime / (60 * 24 * 365)
+      )} năm trước`;
+    } else if (calcutime > 60 * 24 * 30) {
+      allminitime[x].innerText = `${Math.floor(
+        calcutime / (60 * 24 * 30)
+      )} tháng trước`;
+    } else if (calcutime > 60 * 24) {
+      allminitime[x].innerText = `${Math.floor(
+        calcutime / (60 * 24)
+      )} ngày trước`;
+    } else if (calcutime > 60) {
+      allminitime[x].innerText = `${Math.floor(calcutime / 60)} giờ trước`;
+    } else if (calcutime >= 1) {
+      allminitime[x].innerText = `${Math.floor(calcutime)} phút trước`;
+    } else {
+      allminitime[x].innerText = `${calcutime * 60} giây trước`;
+    }
   }
   console.log(thutu);
 }
@@ -161,4 +227,21 @@ function setviewfood() {
   }
   localStorage.setItem("viewfood", idset);
   console.log(localStorage.getItem("viewfood"));
+}
+
+console.log(allfoods);
+
+// search
+let gosearch = document.getElementById("entersearch");
+let inputsearch = document.getElementById("search");
+
+gosearch.addEventListener("click", gosearchpage);
+function gosearchpage() {
+  location.replace("search.html");
+}
+
+function pressenter(event) {
+  if (event.keyCode === 13) {
+    location.replace("search.html");
+  }
 }

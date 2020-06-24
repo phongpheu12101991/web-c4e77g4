@@ -23,15 +23,22 @@
       ></a>
       <div id="searchbutton" class="box">
         <div class="container-1">
-          <span class="icon"><i class="fas fa-search"></i></span>
-          <input type="search" id="search" placeholder="Search..." />
+          <span class="icon" id="entersearch"
+            ><i class="fas fa-search"></i
+          ></span>
+          <input
+            type="search"
+            id="search"
+            placeholder="Search..."
+            onkeypress="return pressenter(event)"
+          />
         </div>
       </div>
       <a href="addfood.html"><div id="add">ADD</div></a>
       <a href="login.html"><div id="log-in">LOG IN</div></a>
     </div>
     <br />
-    <div class="homemain">
+    <div class="homemain hm1">
       <div class="newfoods">
         <div class="tagnew">New foods</div>
         <a href="monchitiet.html"
@@ -39,6 +46,8 @@
             <div class="miniimage" id="newimage1"></div>
             <div class="mininame" id="newname1"></div>
             <div class="minitime" id="newtime1"></div>
+            <div class="miniview" id="newview1"></div>
+            <div class="minilike" id="newlike1"></div>
             <div class="miniid" id="newid1"></div></div
         ></a>
         <a href="monchitiet.html"
@@ -46,6 +55,8 @@
             <div class="miniimage" id="newimage2"></div>
             <div class="mininame" id="newname2"></div>
             <div class="minitime" id="newtime2"></div>
+            <div class="miniview" id="newview2"></div>
+            <div class="minilike" id="newlike2"></div>
             <div class="miniid" id="newid2"></div></div
         ></a>
         <a href="monchitiet.html"
@@ -53,6 +64,8 @@
             <div class="miniimage" id="newimage3"></div>
             <div class="mininame" id="newname3"></div>
             <div class="minitime" id="newtime3"></div>
+            <div class="miniview" id="newview3"></div>
+            <div class="minilike" id="newlike3"></div>
             <div class="miniid" id="newid3"></div></div
         ></a>
         <a href="monchitiet.html"
@@ -60,6 +73,8 @@
             <div class="miniimage" id="newimage4"></div>
             <div class="mininame" id="newname4"></div>
             <div class="minitime" id="newtime4"></div>
+            <div class="miniview" id="newview4"></div>
+            <div class="minilike" id="newlike4"></div>
             <div class="miniid" id="newid4"></div></div
         ></a>
       </div>

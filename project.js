@@ -1,4 +1,3 @@
-
 let allfoods = [
   {
     foodname: "Trà đào cam sả",
@@ -62,7 +61,7 @@ let account = [
     type: `admin`,
   },
 ];
-localStorage.setItem("logged", `phong`);
+
 let nowuser = localStorage.getItem("logged");
 if (nowuser !== "") {
   login.innerText = nowuser;
@@ -222,6 +221,9 @@ function creatfood() {
     creator: nowuser,
     rate: {},
     foodid: allfoods.length,
+    views: 0,
+    like: [],
+    dislike: [],
   });
   console.log(allfoods[allfoods.length - 1]);
   localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);

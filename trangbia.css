@@ -80,3 +80,9 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.abut {
+  z-index: 31;
+  display: flex;
+  justify-content: center;
+}
