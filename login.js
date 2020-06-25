@@ -1,20 +1,4 @@
 account = JSON.parse(localStorage.getItem("account"));
-console.log(account);
-let nowuser = localStorage.getItem("logged");
-let addfood = document.getElementById("add");
-let login = document.getElementById("log-in");
-if (nowuser !== "") {
-  login.innerText = nowuser;
-  console.log(addfood);
-} else {
-  login.innerText = "Log in";
-}
-if (nowuser == "") {
-  addfood.addEventListener("click", nologin);
-}
-function nologin() {
-  alert("Ban can dang nhap");
-}
 
 let id = document.getElementById("inputname");
 let password = document.getElementById("inputpassword");
@@ -29,9 +13,7 @@ function login2() {
     ) {
       alert("log-in success");
       localStorage.setItem("logged", `${account[i].username}`);
-      // id.value = "";
-      // password.value = "";
-      location.replace("home.html");
+      location.href = "home.html";
       check = true;
       break;
     }

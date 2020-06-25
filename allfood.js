@@ -1,85 +1,16 @@
-let nowuser = localStorage.getItem("logged");
+// let nowuser = localStorage.getItem("logged");
 
-let allfoods = [
-  {
-    foodname: "Trà đào cam sả",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><hr><li>Đường nước: 30ml</li><hr><li>Trà: 200ml</li><hr><li>Siro đào: 20ml</li><hr><li>Siro sả: 10ml</li><hr><li>Nước cam: 100ml</li><hr><li>Sả: 1 cây</li><hr><li>Đá: vừa đủ</li><hr></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><hr><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><hr><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><hr><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li><hr></ul>',
-    foodtime: new Date(2019, 10, 24, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 0,
-    views: 0,
-    like: [],
-    dislike: [],
-    foodcmt: [],
-  },
-  {
-    foodname: "Trà quế cam mật ong",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 11, 24, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 1,
-    views: 0,
-    like: [],
-    dislike: [],
-    foodcmt: [],
-  },
-  {
-    foodname: "Trà táo bạc hà",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 5, 20, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 2,
-    views: 0,
-    like: [],
-    dislike: [],
-    foodcmt: [],
-  },
-  {
-    foodname: "Trà hạt sen lá nếp",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 4, 22, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 3,
-    views: 0,
-    like: [],
-    dislike: [],
-    foodcmt: [],
-  },
-];
-
-function getfood() {
-  if (localStorage.getItem("saveallfoods") !== null) {
-    allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
-    for (let x of allfoods) {
-      x.foodtime = new Date(x.foodtime.split(" "));
-    }
+if (localStorage.getItem("saveallfoods") !== null) {
+  allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
+  for (let x of allfoods) {
+    x.foodtime = new Date(x.foodtime.split(" "));
   }
 }
-function savefood() {
-  localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
+if (localStorage.getItem("saveaccount") !== null) {
+  account = JSON.parse(localStorage.getItem("saveaccount"));
 }
-getfood();
-// Reload từ đầu: đổi getfood thành savefood, refresh
+
+
 let monchitiet = document.getElementById("monchitiet");
 
 for (let x of allfoods) {
@@ -122,20 +53,6 @@ for (let x of allfoods) {
   }
 }
 
-let login = document.getElementById("log-in");
-let addfood = document.getElementById("add");
-if (nowuser !== "") {
-  login.innerText = nowuser;
-  console.log(addfood);
-} else {
-  login.innerText = "Log in";
-}
-if (nowuser == "") {
-  addfood.addEventListener("click", nologin);
-}
-function nologin() {
-  alert("Ban can dang nhap");
-}
 
 //like
 let likeicon = document.getElementById("likeicon");
@@ -186,7 +103,7 @@ function pressdislike() {
       likes.innerText = `${x.like.length}`;
     }
   }
-  savefood();
+  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
 }
 function presslike() {
   for (let x of allfoods) {
@@ -212,7 +129,7 @@ function presslike() {
       dislikes.innerText = `${x.dislike.length}`;
     }
   }
-  savefood();
+  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
 }
 
 let allcmt = document.getElementById("allcmt");
@@ -228,7 +145,7 @@ function upcmt() {
     if (x.foodid == localStorage.getItem("viewfood")) {
       x.foodcmt.push(cmt);
       printcmt.innerHTML = `${x.foodcmt.join("")}`;
-      savefood();
+      localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
     }
   }
 }

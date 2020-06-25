@@ -86,3 +86,7 @@
   display: flex;
   justify-content: center;
 }
+
+.button:hover {
+  color: mediumblue;
+}

@@ -1,104 +1,17 @@
-//mảng chứa món ăn
 
-let allfoods = [
-  {
-    foodname: "Trà đào cam sả",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 10, 24, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 0,
-    views: 0,
-    like: [],
-    dislike: [],
-  },
-  {
-    foodname: "Trà quế cam mật ong",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 11, 24, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 1,
-    views: 0,
-    like: [],
-    dislike: [],
-  },
-  {
-    foodname: "Trà táo bạc hà",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 5, 20, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 2,
-    views: 0,
-    like: [],
-    dislike: [],
-  },
-  {
-    foodname: "Trà hạt sen lá nếp",
-    foodimage: "C:/Users/Admin/Desktop/recipe16934-635979775269411988.jpg",
-    foodmaterials:
-      '<ul id="nltradaocamsa"><li>Đào : 1 quả</li><li>Đường nước: 30ml</li><li>Trà: 200ml</li><li>Siro đào: 20ml</li><li>Siro sả: 10ml</li><li>Nước cam: 100ml</li><li>Sả: 1 cây</li><li>Đá: vừa đủ</li></ul>',
-    foodmaking:
-      '<ul id="cltradaocamsa"><li>Đào : Gọt vỏ, cắt miếng</li><li>Cho hỗn hợp đường, siro, trà, nước cam vào bình shake, thêm đá vừa đủ, lắc mạnh</li><li>Cây sả cắt bỏ 2 đầu, đập dập, cam cắt 1 lát</li><li>Đổ toàn bộ ra cốc, cắm cây sả, thêm lát cam và miếng đào để decor, thưởng thức</li></ul>',
-    foodtime: new Date(2019, 4, 22, 16, 18, 20),
-    creator: `phong`,
-    rate: { phong: `3` },
-    foodid: 3,
-    views: 0,
-    like: [],
-    dislike: [],
-  },
-];
 
-//Lấy food từ local, chuyển lại định dạng time
 if (localStorage.getItem("saveallfoods") !== null) {
   allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
+  for (let x of allfoods) {
+    x.foodtime = new Date(x.foodtime.split(" "));
+  }
 }
-for (let x of allfoods) {
-  x.foodtime = new Date(x.foodtime.split(" "));
+if (localStorage.getItem("saveaccount") !== null) {
+  account = JSON.parse(localStorage.getItem("saveaccount"));
 }
-// localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
-// allfoods = localStorage.getItem("saveallfoods");
-//mảng chứa tài khoản
-let account = [
-  {
-    username: `phong`,
-    password: `123`,
-    email: `phong@gmail.com`,
-    type: `admin`,
-    userid: 0,
-  },
-  {
-    username: `duong`,
-    password: `123`,
-    email: `duong@gmail.com`,
-    type: `admin`,
-    userid: 1,
-  },
-  {
-    username: `quan`,
-    password: `123`,
-    email: `quan@gmail.com`,
-    type: `admin`,
-    userid: 2,
-  },
-];
 
-let login = document.getElementById("log-in");
-let addfood = document.getElementById("add");
+
+
 let newimage1 = document.getElementById("newimage1");
 let newimage2 = document.getElementById("newimage2");
 let newimage3 = document.getElementById("newimage3");
@@ -133,20 +46,7 @@ let allminitime = [newtime1, newtime2, newtime3, newtime4];
 let allminiview = [newview1, newview2, newview3, newview4];
 let allminilike = [newlike1, newlike2, newlike3, newlike4];
 // localStorage.setItem("logged", `phong`);
-let nowuser = localStorage.getItem("logged");
 
-if (nowuser !== "") {
-  login.innerText = nowuser;
-  console.log(addfood);
-} else {
-  login.innerText = "Log in";
-}
-if (nowuser == "") {
-  addfood.addEventListener("click", nologin);
-}
-function nologin() {
-  alert("Ban can dang nhap");
-}
 
 function boxnewfood() {
   let thutu = [];
@@ -232,16 +132,5 @@ function setviewfood() {
 console.log(allfoods);
 
 // search
-let gosearch = document.getElementById("entersearch");
-let inputsearch = document.getElementById("search");
 
-gosearch.addEventListener("click", gosearchpage);
-function gosearchpage() {
-  location.replace("search.html");
-}
 
-function pressenter(event) {
-  if (event.keyCode === 13) {
-    location.replace("search.html");
-  }
-}

@@ -1,30 +1,3 @@
-// let account = [
-//   {
-//     acc: "admin",
-//     pass: "123456",
-//   },
-// ];
-let account = [
-  {
-    username: `phong`,
-    password: `123`,
-    email: `phong@gmail.com`,
-    type: `admin`,
-  },
-  {
-    username: `duong`,
-    password: `123`,
-    email: `duong@gmail.com`,
-    type: `admin`,
-  },
-  {
-    username: `quan`,
-    password: `123`,
-    email: `quan@gmail.com`,
-    type: `admin`,
-  },
-];
-
 const newname = document.getElementById("familyname");
 const inputEmail = document.getElementById("inputemail");
 const inputPassword = document.getElementById("inputpassword");
@@ -88,24 +61,6 @@ function onClickEvent() {
 }
 
 account = JSON.parse(localStorage.getItem("account"));
-console.log(account);
-
-let nowuser = localStorage.getItem("logged");
-let addfood = document.getElementById("add");
-let login = document.getElementById("log-in");
-
-if (nowuser !== "") {
-  login.innerText = nowuser;
-  console.log(addfood);
-} else {
-  login.innerText = "Log in";
-}
-if (nowuser == "") {
-  addfood.addEventListener("click", nologin);
-}
-function nologin() {
-  alert("Ban can dang nhap");
-}
 
 function registenter(event) {
   if (event.keyCode === 13) {
