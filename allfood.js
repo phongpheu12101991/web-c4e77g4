@@ -10,7 +10,6 @@ if (localStorage.getItem("saveaccount") !== null) {
   account = JSON.parse(localStorage.getItem("saveaccount"));
 }
 
-
 let monchitiet = document.getElementById("monchitiet");
 
 for (let x of allfoods) {
@@ -52,7 +51,6 @@ for (let x of allfoods) {
     break;
   }
 }
-
 
 //like
 let likeicon = document.getElementById("likeicon");
@@ -103,7 +101,7 @@ function pressdislike() {
       likes.innerText = `${x.like.length}`;
     }
   }
-  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+  localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
 }
 function presslike() {
   for (let x of allfoods) {
@@ -129,7 +127,7 @@ function presslike() {
       dislikes.innerText = `${x.dislike.length}`;
     }
   }
-  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+  localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
 }
 
 let allcmt = document.getElementById("allcmt");
@@ -145,7 +143,7 @@ function upcmt() {
     if (x.foodid == localStorage.getItem("viewfood")) {
       x.foodcmt.push(cmt);
       printcmt.innerHTML = `${x.foodcmt.join("")}`;
-      localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+      localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
     }
   }
 }

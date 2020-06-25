@@ -1,5 +1,3 @@
-
-
 if (localStorage.getItem("saveallfoods") !== null) {
   allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
   for (let x of allfoods) {
@@ -9,8 +7,6 @@ if (localStorage.getItem("saveallfoods") !== null) {
 if (localStorage.getItem("saveaccount") !== null) {
   account = JSON.parse(localStorage.getItem("saveaccount"));
 }
-
-
 
 let newimage1 = document.getElementById("newimage1");
 let newimage2 = document.getElementById("newimage2");
@@ -38,6 +34,10 @@ let newlike1 = document.getElementById("newlike1");
 let newlike2 = document.getElementById("newlike2");
 let newlike3 = document.getElementById("newlike3");
 let newlike4 = document.getElementById("newlike4");
+let newtagsave1 = document.getElementById("newtagsave1");
+let newtagsave2 = document.getElementById("newtagsave2");
+let newtagsave3 = document.getElementById("newtagsave3");
+let newtagsave4 = document.getElementById("newtagsave4");
 
 let allmininewname = [newname1, newname2, newname3, newname4];
 let allmininewimage = [newimage1, newimage2, newimage3, newimage4];
@@ -45,8 +45,10 @@ let allminiid = [newid1, newid2, newid3, newid4];
 let allminitime = [newtime1, newtime2, newtime3, newtime4];
 let allminiview = [newview1, newview2, newview3, newview4];
 let allminilike = [newlike1, newlike2, newlike3, newlike4];
-// localStorage.setItem("logged", `phong`);
+let allminitagsave = [newtagsave1, newtagsave2, newtagsave3, newtagsave4];
 
+let allbookmarkhome = [newtagsave1, newtagsave2, newtagsave3, newtagsave4];
+let sortbookmark = [];
 
 function boxnewfood() {
   let thutu = [];
@@ -65,7 +67,9 @@ function boxnewfood() {
       }
     }
   }
-
+  for (let i = 0; i < 4; i++) {
+    sortbookmark[i] = thutu[i];
+  }
   for (let x = 0; x < 4; x++) {
     allmininewimage[x].style.backgroundImage = `url("${
       allfoods[thutu[x]].foodimage
@@ -78,6 +82,19 @@ function boxnewfood() {
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
       allfoods[thutu[x]].dislike.length
     }`;
+    //tagsave
+    for (let z of account) {
+      if (z.username == nowuser) {
+        if (z.savemenu.indexOf(thutu[x]) !== -1) {
+          allminitagsave[x].classList = `fas fa-bookmark bm2`;
+          allminitagsave[x].title = "Đã lưu";
+        } else {
+          allminitagsave[x].classList = `far fa-bookmark bm1`;
+          allminitagsave[x].title = "Lưu món";
+        }
+      }
+    }
+    allminitagsave[x];
     // tính giờ chênh lệch:
     let calcutime = (new Date() - allfoods[thutu[x]].foodtime) / (1000 * 60);
     if (calcutime > 60 * 24 * 365) {
@@ -131,6 +148,37 @@ function setviewfood() {
 
 console.log(allfoods);
 
-// search
+// link to monchitiet
 
+document.querySelectorAll(".newfoodx").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    location.href = "monchitiet.html";
+  });
+});
 
+//bookmark
+
+for (let bm of allbookmarkhome) {
+  bm.addEventListener("click", setbm);
+}
+function setbm(event) {
+
+  event.stopPropagation()
+  for (let x of account) {
+    if (x.username == nowuser) {
+      if (
+        x.savemenu.indexOf(sortbookmark[allbookmarkhome.indexOf(event.target)]) == -1
+      ) {
+        x.savemenu.push(sortbookmark[allbookmarkhome.indexOf(event.target)]);
+      } else {
+        x.savemenu.splice(
+          x.savemenu.indexOf(sortbookmark[allbookmarkhome.indexOf(event.target)]),
+          1
+        );
+      }
+    }
+  }
+  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+  boxnewfood();
+
+}

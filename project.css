@@ -138,6 +138,7 @@ button:hover {
   border: 1px solid #80808000;
   /* border-radius: 15px; */
   box-shadow: 0px 0px 14px 0px grey;
+  position: relative;
 }
 .tagnew {
   position: absolute;
@@ -591,4 +592,33 @@ input.submit:hover {
 #plogin:hover {
   background-color: rgb(70, 66, 66);
   color: #93a2ad;
+}
+
+/* bookmark */
+.fa-bookmark {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font-size: 40px;
+  color: white;
+  z-index: 1;
+  /* width: 35px;
+  height: 40px; */
+}
+.bm1 {
+  color: white;
+}
+.bm1:hover {
+  color: rgb(51, 49, 49);
+}
+
+.bm2 {
+  color: rgb(51, 49, 49);
+}
+.bm2:hover {
+  color: white;
+}
+
+.newfoodx:hover {
+  border: 1px solid rgb(70, 66, 66);
 }

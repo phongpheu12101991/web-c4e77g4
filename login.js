@@ -1,4 +1,4 @@
-account = JSON.parse(localStorage.getItem("account"));
+account = JSON.parse(localStorage.getItem("saveaccount"));
 
 let id = document.getElementById("inputname");
 let password = document.getElementById("inputpassword");
