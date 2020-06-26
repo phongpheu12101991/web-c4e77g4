@@ -143,6 +143,7 @@ function upcmt() {
     if (x.foodid == localStorage.getItem("viewfood")) {
       x.foodcmt.push(cmt);
       printcmt.innerHTML = `${x.foodcmt.join("")}`;
+      write.value = "";
       localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
     }
   }
