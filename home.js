@@ -184,33 +184,59 @@ function setbm(event) {
 }
 
 // hotfoods
+// let xepview = [];
+// let allid = [];
+// for (let x of allfoods) {
+//   xepview.push(x.views);
+//   allid.push(x.foodid);
+// }
+
+// xepview.sort(function (a, b) {
+//   return b - a;
+// });
+// console.log(xepview);
+// console.log(allid);
+// console.log(allfoods);
+
+// let xepid = [];
+// for (let i = 0; i < 4; i++) {
+//   for (let n = 0; n < allid.length; n++) {
+//     if (allfoods[allid[n]].views == xepview[i]) {
+//       xepid.push(allfoods[allid[n]].foodid);
+//       allid.splice(allfoods[allid[n]].foodid, 1);
+//       console.log(xepid);
+//       console.log(allid);
+//       break;
+//     }
+//   }
+// }
+// console.log(xepid);
 let xepview = [];
-let allid = [];
 for (let x of allfoods) {
   xepview.push(x.views);
-  allid.push(x.foodid);
 }
-
 xepview.sort(function (a, b) {
   return b - a;
 });
 console.log(xepview);
-console.log(allid);
-
+let xepidx = [];
 let xepid = [];
-for (let i = 0; i < 4; i++) {
-  for (let n = 0; n < allid.length; n++) {
-    if (allfoods[allid[n]].views == xepview[i]) {
-      xepid.push(allfoods[allid[n]].foodid);
-      allid.splice(allfoods[allid[n]].foodid, 1);
-      console.log(xepid);
-      console.log(allid);
+for (let x of allfoods) {
+  xepidx.push(x.foodid);
+}
+console.log(xepidx);
+for (let i = 0; i <= xepview.length - 1; i++) {
+  for (let ii = 0; ii < xepidx.length; ii++) {
+
+    if (allfoods[xepidx[ii]].views == xepview[i]) {
+      xepid.push(xepidx[ii]);
+      xepidx.splice(ii, 1);
+      console.log(xepidx);
       break;
     }
   }
 }
-console.log(xepid);
-
+console.log(xepid)
 function caltime(x) {
   let timeresult = "";
   let tinhtime = (new Date() - x) / (1000 * 60);
@@ -238,13 +264,17 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
       allfoods[xepid[0]].foodimage
     }');"></div>
     <div class="mininame" id="hotname1">${allfoods[xepid[0]].foodname}</div>
-    <div class="minitime" id="hottime1">${caltime(allfoods[xepid[0]].foodtime)}</div>
-    <div class="miniview" id="hotview1">${allfoods[xepid[0]].views} lượt xem</div>
+    <div class="minitime" id="hottime1">${caltime(
+      allfoods[xepid[0]].foodtime
+    )}</div>
+    <div class="miniview" id="hotview1">${
+      allfoods[xepid[0]].views
+    } lượt xem</div>
     <div class="minilike" id="hotlike1"><i class="fas fa-heart"></i> ${
       allfoods[xepid[0]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-      allfoods[xepid[0]].dislike.length
-    }</div>
+  allfoods[xepid[0]].dislike.length
+}</div>
     <div class="miniid" id="hotid1">${allfoods[xepid[0]].foodid}</div></div
 >
 <div class="newfoodx" id="hotfood2">
@@ -253,13 +283,17 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
       allfoods[xepid[1]].foodimage
     }');"></div>
     <div class="mininame" id="hotname2">${allfoods[xepid[1]].foodname}</div>
-    <div class="minitime" id="hottime2">${caltime(allfoods[xepid[1]].foodtime)}</div>
-    <div class="miniview" id="hotview2">${allfoods[xepid[1]].views} lượt xem</div>
+    <div class="minitime" id="hottime2">${caltime(
+      allfoods[xepid[1]].foodtime
+    )}</div>
+    <div class="miniview" id="hotview2">${
+      allfoods[xepid[1]].views
+    } lượt xem</div>
     <div class="minilike" id="hotlike2"><i class="fas fa-heart"></i> ${
       allfoods[xepid[1]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-      allfoods[xepid[1]].dislike.length
-    }</div>
+  allfoods[xepid[1]].dislike.length
+}</div>
     <div class="miniid" id="hotid2">${allfoods[xepid[1]].foodid}</div></div
 >
 <div class="newfoodx" id="hotfood3">
@@ -268,13 +302,17 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
       allfoods[xepid[2]].foodimage
     }');"></div>
     <div class="mininame" id="hotname3">${allfoods[xepid[2]].foodname}</div>
-    <div class="minitime" id="hottime3">${caltime(allfoods[xepid[2]].foodtime)}</div>
-    <div class="miniview" id="hotview3">${allfoods[xepid[2]].views} lượt xem</div>
+    <div class="minitime" id="hottime3">${caltime(
+      allfoods[xepid[2]].foodtime
+    )}</div>
+    <div class="miniview" id="hotview3">${
+      allfoods[xepid[2]].views
+    } lượt xem</div>
     <div class="minilike" id="hotlike3"><i class="fas fa-heart"></i> ${
       allfoods[xepid[2]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-      allfoods[xepid[2]].dislike.length
-    }</div>
+  allfoods[xepid[2]].dislike.length
+}</div>
     <div class="miniid" id="hotid3">${allfoods[xepid[2]].foodid}</div></div
 >
 <div class="newfoodx" id="hotfood4">
@@ -283,12 +321,16 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
       allfoods[xepid[3]].foodimage
     }');"></div>
     <div class="mininame" id="hotname4">${allfoods[xepid[3]].foodname}</div>
-    <div class="minitime" id="hottime4">${caltime(allfoods[xepid[3]].foodtime)}</div>
-    <div class="miniview" id="hotview4">${allfoods[xepid[3]].views} lượt xem</div>
+    <div class="minitime" id="hottime4">${caltime(
+      allfoods[xepid[3]].foodtime
+    )}</div>
+    <div class="miniview" id="hotview4">${
+      allfoods[xepid[3]].views
+    } lượt xem</div>
     <div class="minilike" id="hotlike4"><i class="fas fa-heart"></i> ${
       allfoods[xepid[3]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-      allfoods[xepid[3]].dislike.length
-    }</div>
+  allfoods[xepid[3]].dislike.length
+}</div>
     <div class="miniid" id="hotid4">${allfoods[xepid[3]].foodid}</div></div
 >`;
