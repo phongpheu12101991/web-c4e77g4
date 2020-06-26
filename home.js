@@ -59,7 +59,7 @@ function boxnewfood() {
   xeptime.sort(function (a, b) {
     return b - a;
   });
-  console.log(xeptime);
+
   for (let n = 0; n < xeptime.length; n++) {
     for (let i = 0; i < allfoods.length; i++) {
       if (allfoods[i].foodtime == xeptime[n]) {
@@ -146,8 +146,6 @@ function setviewfood() {
   console.log(localStorage.getItem("viewfood"));
 }
 
-console.log(allfoods);
-
 // link to monchitiet
 
 document.querySelectorAll(".newfoodx").forEach((item) => {
@@ -162,17 +160,20 @@ for (let bm of allbookmarkhome) {
   bm.addEventListener("click", setbm);
 }
 function setbm(event) {
-
-  event.stopPropagation()
+  event.stopPropagation();
   for (let x of account) {
     if (x.username == nowuser) {
       if (
-        x.savemenu.indexOf(sortbookmark[allbookmarkhome.indexOf(event.target)]) == -1
+        x.savemenu.indexOf(
+          sortbookmark[allbookmarkhome.indexOf(event.target)]
+        ) == -1
       ) {
         x.savemenu.push(sortbookmark[allbookmarkhome.indexOf(event.target)]);
       } else {
         x.savemenu.splice(
-          x.savemenu.indexOf(sortbookmark[allbookmarkhome.indexOf(event.target)]),
+          x.savemenu.indexOf(
+            sortbookmark[allbookmarkhome.indexOf(event.target)]
+          ),
           1
         );
       }
@@ -180,5 +181,111 @@ function setbm(event) {
   }
   localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
   boxnewfood();
-
 }
+
+// hotfoods
+let xepview = [];
+let allid = [];
+for (let x of allfoods) {
+  xepview.push(x.views);
+  allid.push(x.foodid);
+}
+
+xepview.sort(function (a, b) {
+  return b - a;
+});
+console.log(xepview);
+
+let xepid = [];
+for (let i = 0; i < 4; i++) {
+  for (let n = 0; n < allid.length; n++) {
+    if (allfoods[allid[n]].views == xepview[i]) {
+      xepid.push(allfoods[allid[n]].foodid);
+      allid.splice(allid[n], 1);
+      break;
+    }
+  }
+}
+console.log(xepid);
+
+function caltime(x) {
+  let timeresult = "";
+  let tinhtime = (new Date() - x) / (1000 * 60);
+  if (tinhtime > 60 * 24 * 365) {
+    timeresult = `${Math.floor(tinhtime / (60 * 24 * 365))} năm trước`;
+  } else if (tinhtime > 60 * 24 * 30) {
+    timeresult = `${Math.floor(tinhtime / (60 * 24 * 30))} tháng trước`;
+  } else if (tinhtime > 60 * 24) {
+    timeresult = `${Math.floor(tinhtime / (60 * 24))} ngày trước`;
+  } else if (tinhtime > 60) {
+    timeresult = `${Math.floor(tinhtime / 60)} giờ trước`;
+  } else if (tinhtime >= 1) {
+    timeresult = `${Math.floor(tinhtime)} phút trước`;
+  } else {
+    timeresult = `${tinhtime * 60} giây trước`;
+  }
+  return timeresult;
+}
+
+let hotfoods = document.getElementById("hotfoods");
+hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
+<div class="newfoodx" id="hotfood1">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="hottagsave1"></i>
+    <div class="miniimage" id="hotimage1" style="background-image: url('${
+      allfoods[xepid[0]].foodimage
+    }');"></div>
+    <div class="mininame" id="hotname1">${allfoods[xepid[0]].foodname}</div>
+    <div class="minitime" id="hottime1">${caltime(allfoods[xepid[0]].foodtime)}</div>
+    <div class="miniview" id="hotview1">${allfoods[xepid[0]].views} lượt xem</div>
+    <div class="minilike" id="hotlike1"><i class="fas fa-heart"></i> ${
+      allfoods[xepid[0]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+      allfoods[xepid[0]].dislike.length
+    }</div>
+    <div class="miniid" id="hotid1">${allfoods[xepid[0]].foodid}</div></div
+>
+<div class="newfoodx" id="hotfood2">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="hottagsave2"></i>
+    <div class="miniimage" id="hotimage2" style="background-image: url('${
+      allfoods[xepid[1]].foodimage
+    }');"></div>
+    <div class="mininame" id="hotname2">${allfoods[xepid[1]].foodname}</div>
+    <div class="minitime" id="hottime2">${caltime(allfoods[xepid[1]].foodtime)}</div>
+    <div class="miniview" id="hotview2">${allfoods[xepid[1]].views} lượt xem</div>
+    <div class="minilike" id="hotlike2"><i class="fas fa-heart"></i> ${
+      allfoods[xepid[1]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+      allfoods[xepid[1]].dislike.length
+    }</div>
+    <div class="miniid" id="hotid2">${allfoods[xepid[1]].foodid}</div></div
+>
+<div class="newfoodx" id="hotfood3">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="hottagsave3"></i>
+    <div class="miniimage" id="hotimage3" style="background-image: url('${
+      allfoods[xepid[2]].foodimage
+    }');"></div>
+    <div class="mininame" id="hotname3">${allfoods[xepid[2]].foodname}</div>
+    <div class="minitime" id="hottime3">${caltime(allfoods[xepid[2]].foodtime)}</div>
+    <div class="miniview" id="hotview3">${allfoods[xepid[2]].views} lượt xem</div>
+    <div class="minilike" id="hotlike3"><i class="fas fa-heart"></i> ${
+      allfoods[xepid[2]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+      allfoods[xepid[2]].dislike.length
+    }</div>
+    <div class="miniid" id="hotid3">${allfoods[xepid[2]].foodid}</div></div
+>
+<div class="newfoodx" id="hotfood4">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="hottagsave4"></i>
+    <div class="miniimage" id="hotimage4" style="background-image: url('${
+      allfoods[xepid[3]].foodimage
+    }');"></div>
+    <div class="mininame" id="hotname4">${allfoods[xepid[3]].foodname}</div>
+    <div class="minitime" id="hottime4">${caltime(allfoods[xepid[3]].foodtime)}</div>
+    <div class="miniview" id="hotview4">${allfoods[xepid[3]].views} lượt xem</div>
+    <div class="minilike" id="hotlike4"><i class="fas fa-heart"></i> ${
+      allfoods[xepid[3]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+      allfoods[xepid[3]].dislike.length
+    }</div>
+    <div class="miniid" id="hotid4">${allfoods[xepid[3]].foodid}</div></div
+>`;

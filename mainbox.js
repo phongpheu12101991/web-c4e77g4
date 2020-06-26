@@ -36,12 +36,16 @@ function gohomepage() {
 function pressenter(event) {
   if (event.keyCode === 13) {
     location.href = "search.html";
+    localStorage.setItem("taskfindwhat", `${inputsearch.value}`);
+    localStorage.setItem("taskfind", `findnew`);
   }
 }
 
 gosearch.addEventListener("click", gosearchpage);
 function gosearchpage() {
   location.href = "search.html";
+  localStorage.setItem("taskfindwhat", `${inputsearch.value}`);
+  localStorage.setItem("taskfind", `findnew`);
 }
 
 addfood.addEventListener("click", goaddfoodpage);

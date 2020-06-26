@@ -82,13 +82,13 @@ okadd.addEventListener("click", creatfood);
 function creatfood() {
   let xx = `<ul id="nl${allfoods.length}">`;
   for (let i = 0; i < arrulnl.length; i++) {
-    xx = xx + `<li>${arrulnl[i]}</li><hr>`;
+    xx = xx + `<li>${arrulnl[i]}</li>`;
   }
   let xxx = xx + `</ul>`;
 
   let yy = `<ul id="cl${allfoods.length}">`;
   for (let i = 0; i < arrulcl.length; i++) {
-    yy = yy + `<li>${arrulcl[i]}</li><hr>`;
+    yy = yy + `<li>${arrulcl[i]}</li>`;
   }
   let yyy = yy + `</ul>`;
 
@@ -110,11 +110,11 @@ function creatfood() {
     foodmaking: yyy,
     foodtime: new Date(),
     creator: nowuser,
-    rate: {},
     foodid: allfoods.length,
     views: 0,
     like: [],
     dislike: [],
+    foodcmt: [],
   });
   console.log(allfoods[allfoods.length - 1]);
   localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
