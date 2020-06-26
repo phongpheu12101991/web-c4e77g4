@@ -1,3 +1,4 @@
+account = JSON.parse(localStorage.getItem("saveaccount"));
 const newname = document.getElementById("familyname");
 const inputEmail = document.getElementById("inputemail");
 const inputPassword = document.getElementById("inputpassword");
@@ -60,7 +61,7 @@ function onClickEvent() {
   inputPassword2.value = "";
 }
 
-account = JSON.parse(localStorage.getItem("account"));
+
 
 function registenter(event) {
   if (event.keyCode === 13) {
@@ -72,3 +73,5 @@ newname.addEventListener("keypress", registenter);
 inputEmail.addEventListener("keypress", registenter);
 inputPassword.addEventListener("keypress", registenter);
 inputPassword2.addEventListener("keypress", registenter);
+
+console.log(account);

@@ -60,7 +60,7 @@ let allfoodscopy = [];
 function searchresult() {
   if (taskfind == "findnew") {
     for (let i = allfoodscopy.length - 1; i >= 0; i--) {
-      let findfoods = `<div class="viewsearch">
+      let findfoods = `<div class="viewsearch" id='${allfoodscopy[i].foodname}'>
       <div class="viewsearchimage" style="background-image: url('${allfoodscopy[i].foodimage}');"></div>
       <div class="viewsearchname"><h1>${allfoodscopy[i].foodname}</h1></div>
       <div class="viewsearchcreator">Đăng bởi: ${allfoodscopy[i].creator}</div>
@@ -72,7 +72,7 @@ function searchresult() {
     }
   } else if (taskfind == "findold") {
     for (let i = 0; i <= allfoodscopy.length - 1; i++) {
-      let findfoods = `<div class="viewsearch">
+      let findfoods = `<div class="viewsearch" id='${allfoodscopy[i].foodname}'>
       <div class="viewsearchimage" style="background-image: url('${allfoodscopy[i].foodimage}');"></div>
       <div class="viewsearchname"><h1>${allfoodscopy[i].foodname}</h1></div>
       <div class="viewsearchcreator">Đăng bởi: ${allfoodscopy[i].creator}</div>
@@ -102,7 +102,9 @@ function searchresult() {
       for (let ii = 0; ii < xepid.length; ii++) {
         console.log(allfoodscopy[6]);
         if (allfoodscopy[xepid[ii]].views == xepview[i]) {
-          let findfoods = `<div class="viewsearch">
+          let findfoods = `<div class="viewsearch" id='${
+            allfoodscopy[xepid[ii]].foodname
+          }'>
       <div class="viewsearchimage" style="background-image: url('${
         allfoodscopy[xepid[ii]].foodimage
       }');"></div>
@@ -148,7 +150,9 @@ function searchresult() {
     for (let i = 0; i <= xepview.length - 1; i++) {
       for (let ii = 0; ii < xepid.length; ii++) {
         if (allfoodscopy[xepid[ii]].views == xepview[i]) {
-          let findfoods = `<div class="viewsearch">
+          let findfoods = `<div class="viewsearch" id='${
+            allfoodscopy[xepid[ii]].foodname
+          }'>
       <div class="viewsearchimage" style="background-image: url('${
         allfoodscopy[xepid[ii]].foodimage
       }');"></div>
@@ -194,7 +198,9 @@ function searchresult() {
     for (let i = 0; i <= xeplike.length - 1; i++) {
       for (let ii = 0; ii < xepid.length; ii++) {
         if (allfoodscopy[xepid[ii]].like.length == xeplike[i]) {
-          let findfoods = `<div class="viewsearch">
+          let findfoods = `<div class="viewsearch" id='${
+            allfoodscopy[xepid[ii]].foodname
+          }'>
       <div class="viewsearchimage" style="background-image: url('${
         allfoodscopy[xepid[ii]].foodimage
       }');"></div>
@@ -240,7 +246,9 @@ function searchresult() {
     for (let i = 0; i <= xeplike.length - 1; i++) {
       for (let ii = 0; ii < xepid.length; ii++) {
         if (allfoodscopy[xepid[ii]].like.length == xeplike[i]) {
-          let findfoods = `<div class="viewsearch">
+          let findfoods = `<div class="viewsearch" id='${
+            allfoodscopy[xepid[ii]].foodname
+          }'>
       <div class="viewsearchimage" style="background-image: url('${
         allfoodscopy[xepid[ii]].foodimage
       }');"></div>
@@ -339,3 +347,14 @@ function changelike() {
   searchresult();
   setbutton();
 }
+
+document.querySelectorAll(".viewsearch").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    for (let x of allfoods) {
+      if (x.foodname == item.id) {
+        location.href = "monchitiet.html";
+        localStorage.setItem("viewfood", `${x.foodid}`);
+      }
+    }
+  });
+});

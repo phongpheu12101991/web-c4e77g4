@@ -114,7 +114,7 @@ function boxnewfood() {
     } else if (calcutime >= 1) {
       allminitime[x].innerText = `${Math.floor(calcutime)} phút trước`;
     } else {
-      allminitime[x].innerText = `${calcutime * 60} giây trước`;
+      allminitime[x].innerText = `${Math.floor(calcutime * 60)} giây trước`;
     }
   }
   console.log(thutu);
@@ -227,7 +227,6 @@ for (let x of allfoods) {
 console.log(xepidx);
 for (let i = 0; i <= xepview.length - 1; i++) {
   for (let ii = 0; ii < xepidx.length; ii++) {
-
     if (allfoods[xepidx[ii]].views == xepview[i]) {
       xepid.push(xepidx[ii]);
       xepidx.splice(ii, 1);
@@ -236,7 +235,7 @@ for (let i = 0; i <= xepview.length - 1; i++) {
     }
   }
 }
-console.log(xepid)
+console.log(xepid);
 function caltime(x) {
   let timeresult = "";
   let tinhtime = (new Date() - x) / (1000 * 60);
@@ -257,7 +256,9 @@ function caltime(x) {
 }
 
 let hotfoods = document.getElementById("hotfoods");
-hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
+function setboxhot() {
+  hotfoods.innerHTML = `<div class="tagnew" id='taghot'>Xem<br>nhiều</div>
+  <i class="fas fa-tag"></i>
 <div class="newfoodx" id="hotfood1">
     <i class="far fa-bookmark bm1" title='Lưu món' id="hottagsave1"></i>
     <div class="miniimage" id="hotimage1" style="background-image: url('${
@@ -273,8 +274,8 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
     <div class="minilike" id="hotlike1"><i class="fas fa-heart"></i> ${
       allfoods[xepid[0]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-  allfoods[xepid[0]].dislike.length
-}</div>
+    allfoods[xepid[0]].dislike.length
+  }</div>
     <div class="miniid" id="hotid1">${allfoods[xepid[0]].foodid}</div></div
 >
 <div class="newfoodx" id="hotfood2">
@@ -292,8 +293,8 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
     <div class="minilike" id="hotlike2"><i class="fas fa-heart"></i> ${
       allfoods[xepid[1]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-  allfoods[xepid[1]].dislike.length
-}</div>
+    allfoods[xepid[1]].dislike.length
+  }</div>
     <div class="miniid" id="hotid2">${allfoods[xepid[1]].foodid}</div></div
 >
 <div class="newfoodx" id="hotfood3">
@@ -311,8 +312,8 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
     <div class="minilike" id="hotlike3"><i class="fas fa-heart"></i> ${
       allfoods[xepid[2]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-  allfoods[xepid[2]].dislike.length
-}</div>
+    allfoods[xepid[2]].dislike.length
+  }</div>
     <div class="miniid" id="hotid3">${allfoods[xepid[2]].foodid}</div></div
 >
 <div class="newfoodx" id="hotfood4">
@@ -330,7 +331,159 @@ hotfoods.innerHTML = `<div class="tagnew">Xem nhiều</div>
     <div class="minilike" id="hotlike4"><i class="fas fa-heart"></i> ${
       allfoods[xepid[3]].like.length
     }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
-  allfoods[xepid[3]].dislike.length
-}</div>
+    allfoods[xepid[3]].dislike.length
+  }</div>
     <div class="miniid" id="hotid4">${allfoods[xepid[3]].foodid}</div></div
 >`;
+}
+setboxhot();
+let hotfood1 = document.getElementById("hotfood1");
+let hotfood2 = document.getElementById("hotfood2");
+let hotfood3 = document.getElementById("hotfood3");
+let hotfood4 = document.getElementById("hotfood4");
+let hottagsave1 = document.getElementById("hottagsave1");
+let hottagsave2 = document.getElementById("hottagsave2");
+let hottagsave3 = document.getElementById("hottagsave3");
+let hottagsave4 = document.getElementById("hottagsave4");
+
+function setbmhotfood() {
+  for (let z of account) {
+    if (z.username == nowuser) {
+      if (z.savemenu.indexOf(xepid[0]) !== -1) {
+        hottagsave1.classList = `fas fa-bookmark bm2`;
+        hottagsave1.title = "Đã lưu";
+      } else {
+        hottagsave1.classList = `far fa-bookmark bm1`;
+        hottagsave1.title = "Lưu món";
+      }
+      if (z.savemenu.indexOf(xepid[1]) !== -1) {
+        hottagsave2.classList = `fas fa-bookmark bm2`;
+        hottagsave2.title = "Đã lưu";
+      } else {
+        hottagsave2.classList = `far fa-bookmark bm1`;
+        hottagsave2.title = "Lưu món";
+      }
+      if (z.savemenu.indexOf(xepid[2]) !== -1) {
+        hottagsave3.classList = `fas fa-bookmark bm2`;
+        hottagsave3.title = "Đã lưu";
+      } else {
+        hottagsave3.classList = `far fa-bookmark bm1`;
+        hottagsave3.title = "Lưu món";
+      }
+      if (z.savemenu.indexOf(xepid[3]) !== -1) {
+        hottagsave4.classList = `fas fa-bookmark bm2`;
+        hottagsave4.title = "Đã lưu";
+      } else {
+        hottagsave4.classList = `far fa-bookmark bm1`;
+        hottagsave4.title = "Lưu món";
+      }
+    }
+  }
+}
+
+setbmhotfood();
+
+hotfood1.addEventListener("click", gochitiet);
+hotfood2.addEventListener("click", gochitiet);
+hotfood3.addEventListener("click", gochitiet);
+hotfood4.addEventListener("click", gochitiet);
+hottagsave1.addEventListener("click", bookmark);
+hottagsave2.addEventListener("click", bookmark);
+hottagsave3.addEventListener("click", bookmark);
+hottagsave4.addEventListener("click", bookmark);
+
+function gochitiet() {
+  if (this.id == `hotfood1`) {
+    localStorage.setItem("viewfood", `${xepid[0]}`);
+    location.href = "monchitiet.html";
+  } else if (this.id == `hotfood2`) {
+    localStorage.setItem("viewfood", `${xepid[1]}`);
+    location.href = "monchitiet.html";
+  } else if (this.id == `hotfood3`) {
+    localStorage.setItem("viewfood", `${xepid[2]}`);
+    location.href = "monchitiet.html";
+  } else if (this.id == `hotfood4`) {
+    localStorage.setItem("viewfood", `${xepid[3]}`);
+    location.href = "monchitiet.html";
+  }
+}
+function bookmark(event) {
+  event.stopPropagation();
+  if (this.id == `hottagsave1`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid[0]) == -1) {
+          x.savemenu.push(xepid[0]);
+          hottagsave1.classList = `fas fa-bookmark bm2`;
+          hottagsave1.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid[0]), 1);
+          hottagsave1.classList = `far fa-bookmark bm1`;
+          hottagsave1.title = "Lưu món";
+        }
+      }
+    }
+  } else if (this.id == `hottagsave2`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid[1]) == -1) {
+          x.savemenu.push(xepid[1]);
+          hottagsave2.classList = `fas fa-bookmark bm2`;
+          hottagsave2.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid[1]), 1);
+          hottagsave2.classList = `far fa-bookmark bm1`;
+          hottagsave2.title = "Lưu món";
+        }
+      }
+    }
+  } else if (this.id == `hottagsave3`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid[2]) == -1) {
+          x.savemenu.push(xepid[2]);
+          hottagsave3.classList = `fas fa-bookmark bm2`;
+          hottagsave3.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid[2]), 1);
+          hottagsave3.classList = `far fa-bookmark bm1`;
+          hottagsave3.title = "Lưu món";
+        }
+      }
+    }
+  } else if (this.id == `hottagsave4`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid[3]) == -1) {
+          x.savemenu.push(xepid[3]);
+          hottagsave4.classList = `fas fa-bookmark bm2`;
+          hottagsave4.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid[3]), 1);
+          hottagsave4.classList = `far fa-bookmark bm1`;
+          hottagsave4.title = "Lưu món";
+        }
+      }
+    }
+  }
+  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+  setbmhotfood();
+  boxnewfood();
+}
+
+let tagnew = document.getElementById("tagnew");
+let taghot = document.getElementById("taghot");
+
+tagnew.addEventListener("click", tagnewclick);
+taghot.addEventListener("click", taghotclick);
+
+function tagnewclick() {
+  location.href = "search.html";
+  localStorage.setItem("taskfindwhat", ``);
+  localStorage.setItem("taskfind", `findnew`);
+}
+function taghotclick() {
+  location.href = "search.html";
+  localStorage.setItem("taskfindwhat", ``);
+  localStorage.setItem("taskfind", `findview`);
+}

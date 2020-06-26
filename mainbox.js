@@ -1,3 +1,7 @@
+// let cover = document.getElementById('coverpicture');
+// cover.innerHTML
+
+
 let taskbar = document.getElementById("taskbar");
 taskbar.innerHTML = `<div id="logo">
 <img src="C:/Users/Admin/Desktop/logo.png" alt="x" id="imagelogo" />
