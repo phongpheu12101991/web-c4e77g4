@@ -195,13 +195,16 @@ xepview.sort(function (a, b) {
   return b - a;
 });
 console.log(xepview);
+console.log(allid);
 
 let xepid = [];
 for (let i = 0; i < 4; i++) {
   for (let n = 0; n < allid.length; n++) {
     if (allfoods[allid[n]].views == xepview[i]) {
       xepid.push(allfoods[allid[n]].foodid);
-      allid.splice(allid[n], 1);
+      allid.splice(allfoods[allid[n]].foodid, 1);
+      console.log(xepid);
+      console.log(allid);
       break;
     }
   }
