@@ -154,63 +154,10 @@ document.querySelectorAll(".newfoodx").forEach((item) => {
   });
 });
 
-//bookmark
 
-for (let bm of allbookmarkhome) {
-  bm.addEventListener("click", setbm);
-}
-function setbm(event) {
-  event.stopPropagation();
-  for (let x of account) {
-    if (x.username == nowuser) {
-      if (
-        x.savemenu.indexOf(
-          sortbookmark[allbookmarkhome.indexOf(event.target)]
-        ) == -1
-      ) {
-        x.savemenu.push(sortbookmark[allbookmarkhome.indexOf(event.target)]);
-      } else {
-        x.savemenu.splice(
-          x.savemenu.indexOf(
-            sortbookmark[allbookmarkhome.indexOf(event.target)]
-          ),
-          1
-        );
-      }
-    }
-  }
-  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
-  boxnewfood();
-}
 
 // hotfoods
-// let xepview = [];
-// let allid = [];
-// for (let x of allfoods) {
-//   xepview.push(x.views);
-//   allid.push(x.foodid);
-// }
 
-// xepview.sort(function (a, b) {
-//   return b - a;
-// });
-// console.log(xepview);
-// console.log(allid);
-// console.log(allfoods);
-
-// let xepid = [];
-// for (let i = 0; i < 4; i++) {
-//   for (let n = 0; n < allid.length; n++) {
-//     if (allfoods[allid[n]].views == xepview[i]) {
-//       xepid.push(allfoods[allid[n]].foodid);
-//       allid.splice(allfoods[allid[n]].foodid, 1);
-//       console.log(xepid);
-//       console.log(allid);
-//       break;
-//     }
-//   }
-// }
-// console.log(xepid);
 let xepview = [];
 for (let x of allfoods) {
   xepview.push(x.views);
@@ -407,6 +354,332 @@ function gochitiet() {
     location.href = "monchitiet.html";
   }
 }
+
+
+let tagnew = document.getElementById("tagnew");
+let taghot = document.getElementById("taghot");
+
+tagnew.addEventListener("click", tagnewclick);
+taghot.addEventListener("click", taghotclick);
+
+function tagnewclick() {
+  location.href = "search.html";
+  localStorage.setItem("taskfindwhat", ``);
+  localStorage.setItem("taskfind", `findnew`);
+}
+function taghotclick() {
+  location.href = "search.html";
+  localStorage.setItem("taskfindwhat", ``);
+  localStorage.setItem("taskfind", `findview`);
+}
+
+
+// likefoods
+
+let xeplike = [];
+for (let x of allfoods) {
+  xeplike.push(x.like.length);
+}
+xeplike.sort(function (a, b) {
+  return b - a;
+});
+console.log(xeplike);
+let xepidxx = [];
+let xepid2 = [];
+for (let x of allfoods) {
+  xepidxx.push(x.foodid);
+}
+console.log(xepidxx);
+for (let i = 0; i <= xeplike.length - 1; i++) {
+  for (let ii = 0; ii < xepidxx.length; ii++) {
+    if (allfoods[xepidxx[ii]].like.length == xeplike[i]) {
+      xepid2.push(xepidxx[ii]);
+      xepidxx.splice(ii, 1);
+      console.log(xepidxx);
+      break;
+    }
+  }
+}
+console.log(xepid2);
+// function caltime(x) {
+//   let timeresult = "";
+//   let tinhtime = (new Date() - x) / (1000 * 60);
+//   if (tinhtime > 60 * 24 * 365) {
+//     timeresult = `${Math.floor(tinhtime / (60 * 24 * 365))} năm trước`;
+//   } else if (tinhtime > 60 * 24 * 30) {
+//     timeresult = `${Math.floor(tinhtime / (60 * 24 * 30))} tháng trước`;
+//   } else if (tinhtime > 60 * 24) {
+//     timeresult = `${Math.floor(tinhtime / (60 * 24))} ngày trước`;
+//   } else if (tinhtime > 60) {
+//     timeresult = `${Math.floor(tinhtime / 60)} giờ trước`;
+//   } else if (tinhtime >= 1) {
+//     timeresult = `${Math.floor(tinhtime)} phút trước`;
+//   } else {
+//     timeresult = `${tinhtime * 60} giây trước`;
+//   }
+//   return timeresult;
+// }
+
+let likefoods = document.getElementById("likefoods");
+function setboxlike() {
+  likefoods.innerHTML = `<div class="tagnew" id='taglike'>Yêu thích</div>
+  <i class="fas fa-tag"></i>
+<div class="newfoodx" id="likefood1">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="liketagsave1"></i>
+    <div class="miniimage" id="likeimage1" style="background-image: url('${
+      allfoods[xepid2[0]].foodimage
+    }');"></div>
+    <div class="mininame" id="likename1">${allfoods[xepid2[0]].foodname}</div>
+    <div class="minitime" id="liketime1">${caltime(
+      allfoods[xepid2[0]].foodtime
+    )}</div>
+    <div class="miniview" id="likeview1">${
+      allfoods[xepid2[0]].views
+    } lượt xem</div>
+    <div class="minilike" id="likelike1"><i class="fas fa-heart"></i> ${
+      allfoods[xepid2[0]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+    allfoods[xepid2[0]].dislike.length
+  }</div>
+    <div class="miniid" id="likeid1">${allfoods[xepid2[0]].foodid}</div></div
+>
+<div class="newfoodx" id="likefood2">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="liketagsave2"></i>
+    <div class="miniimage" id="likeimage2" style="background-image: url('${
+      allfoods[xepid2[1]].foodimage
+    }');"></div>
+    <div class="mininame" id="likename2">${allfoods[xepid2[1]].foodname}</div>
+    <div class="minitime" id="liketime2">${caltime(
+      allfoods[xepid2[1]].foodtime
+    )}</div>
+    <div class="miniview" id="likeview2">${
+      allfoods[xepid2[1]].views
+    } lượt xem</div>
+    <div class="minilike" id="likelike2"><i class="fas fa-heart"></i> ${
+      allfoods[xepid2[1]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+    allfoods[xepid2[1]].dislike.length
+  }</div>
+    <div class="miniid" id="likeid2">${allfoods[xepid2[1]].foodid}</div></div
+>
+<div class="newfoodx" id="likefood3">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="liketagsave3"></i>
+    <div class="miniimage" id="likeimage3" style="background-image: url('${
+      allfoods[xepid2[2]].foodimage
+    }');"></div>
+    <div class="mininame" id="likename3">${allfoods[xepid2[2]].foodname}</div>
+    <div class="minitime" id="liketime3">${caltime(
+      allfoods[xepid2[2]].foodtime
+    )}</div>
+    <div class="miniview" id="likeview3">${
+      allfoods[xepid2[2]].views
+    } lượt xem</div>
+    <div class="minilike" id="likelike3"><i class="fas fa-heart"></i> ${
+      allfoods[xepid2[2]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+    allfoods[xepid2[2]].dislike.length
+  }</div>
+    <div class="miniid" id="likeid3">${allfoods[xepid2[2]].foodid}</div></div
+>
+<div class="newfoodx" id="likefood4">
+    <i class="far fa-bookmark bm1" title='Lưu món' id="liketagsave4"></i>
+    <div class="miniimage" id="likeimage4" style="background-image: url('${
+      allfoods[xepid2[3]].foodimage
+    }');"></div>
+    <div class="mininame" id="likename4">${allfoods[xepid2[3]].foodname}</div>
+    <div class="minitime" id="liketime4">${caltime(
+      allfoods[xepid2[3]].foodtime
+    )}</div>
+    <div class="miniview" id="likeview4">${
+      allfoods[xepid2[3]].views
+    } lượt xem</div>
+    <div class="minilike" id="likelike4"><i class="fas fa-heart"></i> ${
+      allfoods[xepid2[3]].like.length
+    }&emsp;&emsp;<i class="fas fa-thumbs-down"></i> ${
+    allfoods[xepid2[3]].dislike.length
+  }</div>
+    <div class="miniid" id="likeid4">${allfoods[xepid2[3]].foodid}</div></div
+>`;
+}
+setboxlike();
+let likefood1 = document.getElementById("likefood1");
+let likefood2 = document.getElementById("likefood2");
+let likefood3 = document.getElementById("likefood3");
+let likefood4 = document.getElementById("likefood4");
+let liketagsave1 = document.getElementById("liketagsave1");
+let liketagsave2 = document.getElementById("liketagsave2");
+let liketagsave3 = document.getElementById("liketagsave3");
+let liketagsave4 = document.getElementById("liketagsave4");
+
+function setbmlikefood() {
+  for (let z of account) {
+    if (z.username == nowuser) {
+      if (z.savemenu.indexOf(xepid2[0]) !== -1) {
+        liketagsave1.classList = `fas fa-bookmark bm2`;
+        liketagsave1.title = "Đã lưu";
+      } else {
+        liketagsave1.classList = `far fa-bookmark bm1`;
+        liketagsave1.title = "Lưu món";
+      }
+      if (z.savemenu.indexOf(xepid2[1]) !== -1) {
+        liketagsave2.classList = `fas fa-bookmark bm2`;
+        liketagsave2.title = "Đã lưu";
+      } else {
+        liketagsave2.classList = `far fa-bookmark bm1`;
+        liketagsave2.title = "Lưu món";
+      }
+      if (z.savemenu.indexOf(xepid2[2]) !== -1) {
+        liketagsave3.classList = `fas fa-bookmark bm2`;
+        liketagsave3.title = "Đã lưu";
+      } else {
+        liketagsave3.classList = `far fa-bookmark bm1`;
+        liketagsave3.title = "Lưu món";
+      }
+      if (z.savemenu.indexOf(xepid2[3]) !== -1) {
+        liketagsave4.classList = `fas fa-bookmark bm2`;
+        liketagsave4.title = "Đã lưu";
+      } else {
+        liketagsave4.classList = `far fa-bookmark bm1`;
+        liketagsave4.title = "Lưu món";
+      }
+    }
+  }
+}
+
+setbmlikefood();
+
+likefood1.addEventListener("click", gochitiet2);
+likefood2.addEventListener("click", gochitiet2);
+likefood3.addEventListener("click", gochitiet2);
+likefood4.addEventListener("click", gochitiet2);
+liketagsave1.addEventListener("click", bookmark2);
+liketagsave2.addEventListener("click", bookmark2);
+liketagsave3.addEventListener("click", bookmark2);
+liketagsave4.addEventListener("click", bookmark2);
+
+function gochitiet2() {
+  if (this.id == `likefood1`) {
+    localStorage.setItem("viewfood", `${xepid2[0]}`);
+    location.href = "monchitiet.html";
+  } else if (this.id == `likefood2`) {
+    localStorage.setItem("viewfood", `${xepid2[1]}`);
+    location.href = "monchitiet.html";
+  } else if (this.id == `likefood3`) {
+    localStorage.setItem("viewfood", `${xepid2[2]}`);
+    location.href = "monchitiet.html";
+  } else if (this.id == `likefood4`) {
+    localStorage.setItem("viewfood", `${xepid2[3]}`);
+    location.href = "monchitiet.html";
+  }
+}
+function bookmark2(event) {
+  event.stopPropagation();
+  if (this.id == `liketagsave1`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid2[0]) == -1) {
+          x.savemenu.push(xepid2[0]);
+          liketagsave1.classList = `fas fa-bookmark bm2`;
+          liketagsave1.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid2[0]), 1);
+          liketagsave1.classList = `far fa-bookmark bm1`;
+          liketagsave1.title = "Lưu món";
+        }
+      }
+    }
+  } else if (this.id == `liketagsave2`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid2[1]) == -1) {
+          x.savemenu.push(xepid2[1]);
+          liketagsave2.classList = `fas fa-bookmark bm2`;
+          liketagsave2.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid2[1]), 1);
+          liketagsave2.classList = `far fa-bookmark bm1`;
+          liketagsave2.title = "Lưu món";
+        }
+      }
+    }
+  } else if (this.id == `liketagsave3`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid2[2]) == -1) {
+          x.savemenu.push(xepid2[2]);
+          liketagsave3.classList = `fas fa-bookmark bm2`;
+          liketagsave3.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid2[2]), 1);
+          liketagsave3.classList = `far fa-bookmark bm1`;
+          liketagsave3.title = "Lưu món";
+        }
+      }
+    }
+  } else if (this.id == `liketagsave4`) {
+    for (let x of account) {
+      if (x.username == nowuser) {
+        if (x.savemenu.indexOf(xepid2[3]) == -1) {
+          x.savemenu.push(xepid2[3]);
+          liketagsave4.classList = `fas fa-bookmark bm2`;
+          liketagsave4.title = "Đã lưu";
+        } else {
+          x.savemenu.splice(x.savemenu.indexOf(xepid2[3]), 1);
+          liketagsave4.classList = `far fa-bookmark bm1`;
+          liketagsave4.title = "Lưu món";
+        }
+      }
+    }
+  }
+  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+  setbmlikefood();
+  boxnewfood();
+  setbmhotfood();
+}
+
+let taglike = document.getElementById("taglike");
+
+
+taglike.addEventListener("click", taglikeclick);
+
+function taglikeclick() {
+  location.href = "search.html";
+  localStorage.setItem("taskfindwhat", ``);
+  localStorage.setItem("taskfind", `findlike`);
+}
+
+//bookmark new
+
+for (let bm of allbookmarkhome) {
+  bm.addEventListener("click", setbm);
+}
+function setbm(event) {
+  event.stopPropagation();
+  for (let x of account) {
+    if (x.username == nowuser) {
+      if (
+        x.savemenu.indexOf(
+          sortbookmark[allbookmarkhome.indexOf(event.target)]
+        ) == -1
+      ) {
+        x.savemenu.push(sortbookmark[allbookmarkhome.indexOf(event.target)]);
+      } else {
+        x.savemenu.splice(
+          x.savemenu.indexOf(
+            sortbookmark[allbookmarkhome.indexOf(event.target)]
+          ),
+          1
+        );
+      }
+    }
+  }
+  localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
+  boxnewfood();
+  setbmhotfood();
+  setbmlikefood();
+}
+
+// bookmark hot
 function bookmark(event) {
   event.stopPropagation();
   if (this.id == `hottagsave1`) {
@@ -469,21 +742,5 @@ function bookmark(event) {
   localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
   setbmhotfood();
   boxnewfood();
-}
-
-let tagnew = document.getElementById("tagnew");
-let taghot = document.getElementById("taghot");
-
-tagnew.addEventListener("click", tagnewclick);
-taghot.addEventListener("click", taghotclick);
-
-function tagnewclick() {
-  location.href = "search.html";
-  localStorage.setItem("taskfindwhat", ``);
-  localStorage.setItem("taskfind", `findnew`);
-}
-function taghotclick() {
-  location.href = "search.html";
-  localStorage.setItem("taskfindwhat", ``);
-  localStorage.setItem("taskfind", `findview`);
+  setbmlikefood();
 }

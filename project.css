@@ -10,10 +10,12 @@ hr {
   margin-top: 2px;
 }
 body {
-  min-width: 1100px;
+  min-width: 1120px;
   max-width: 1200px;
   margin: auto;
   background-color: #ededed;
+  background-image: url(C:/Users/Admin/Desktop/xxxxxxxxxx.png);
+  
 }
 
 a {
@@ -54,18 +56,15 @@ button:hover {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(
-    to bottom,
-    gray,
-    rgb(155, 151, 151),
-    rgb(70, 69, 69)
-  );
+  background: rgba(95, 90, 90, 0.3);
 }
 #logo {
   position: absolute;
   left: 0;
   width: 100px;
   height: 50px;
+  background-color: red;
+  border-radius: 10px;
 }
 
 #searchbutton {
@@ -76,18 +75,20 @@ button:hover {
 }
 #add {
   position: absolute;
-  right: 200px;
-  width: 200px;
+  right: 203px;
+  width: 250px;
   height: 50px;
-
+  color: white;
   text-align: center;
+  border-radius: 10px;
+  background-color: rgb(180, 24, 24);
 }
 #log-in {
   position: absolute;
   right: 0;
   width: 200px;
   height: 50px;
-
+  color: white;
   display: flex;
 }
 
@@ -125,7 +126,7 @@ button:hover {
 .newfoods {
   width: 100%;
   height: 300px;
-  background-color: grey;
+
   display: flex;
   justify-content: space-evenly;
   position: relative;
@@ -146,16 +147,16 @@ button:hover {
 .hotfoods {
   width: 100%;
   height: 300px;
-  background-color: grey;
+
   display: flex;
   justify-content: space-evenly;
   position: relative;
 }
 
-.hotmembers {
+.likefoods {
   width: 100%;
   height: 300px;
-  background-color: grey;
+
   display: flex;
   justify-content: space-evenly;
   position: relative;
@@ -262,6 +263,7 @@ button:hover {
   background-color: blanchedalmond;
   font-size: larger;
   padding-top: 5px;
+  font-weight: bolder;
 }
 .minitime {
   width: 100%;
@@ -354,10 +356,10 @@ input.submit:hover {
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
-  -webkit-transition: background 0.55s ease;
+  /* -webkit-transition: background 0.55s ease;
   -moz-transition: background 0.55s ease;
   -ms-transition: background 0.55s ease;
-  -o-transition: background 0.55s ease;
+  -o-transition: background 0.55s ease; */
   transition: background 0.55s ease;
 }
 .container-1 input#search {
@@ -373,10 +375,10 @@ input.submit:hover {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-transition: background 0.55s ease;
+  /* -webkit-transition: background 0.55s ease;
   -moz-transition: background 0.55s ease;
   -ms-transition: background 0.55s ease;
-  -o-transition: background 0.55s ease;
+  -o-transition: background 0.55s ease; */
   transition: background 0.55s ease;
 }
 .container-1 input#search:-ms-input-placeholder {
@@ -399,6 +401,7 @@ input.submit:hover {
 .container-1 input#search:active {
   outline: none;
   width: 500px;
+  transition: 1s;
 }
 
 .container-1:hover input#search {
@@ -411,8 +414,8 @@ input.submit:hover {
 
 /* logo */
 #imagelogo {
-  height: 52px;
-  margin-top: -1px;
+  height: 50px;
+  /* margin-top: -1px; */
 }
 
 /* views and like */
@@ -541,9 +544,14 @@ input.submit:hover {
   height: 100%;
   padding-top: 10px;
   text-align: center;
+  border-radius: 10px;
+  background-color: rgb(180, 24, 24);
 }
 #plogin {
+  margin-right: 2px;
   width: 150px;
+  border-radius: 10px;
+  background-color: rgb(180, 24, 24);
 }
 
 #logindrop {
@@ -629,6 +637,9 @@ input.submit:hover {
   margin: 10px auto;
   position: relative;
 }
+.viewsearch:hover {
+  background-color: rgb(151, 144, 144);
+}
 .viewsearchimage {
   position: absolute;
   top: 5px;
@@ -645,7 +656,6 @@ input.submit:hover {
   position: absolute;
   top: 10px;
   left: 220px;
-  background-color: teal;
   width: 645px;
   height: 40px;
 }
@@ -654,7 +664,6 @@ input.submit:hover {
   position: absolute;
   top: 60px;
   left: 220px;
-  background-color: teal;
   width: 645px;
   height: 25px;
 }
@@ -663,7 +672,6 @@ input.submit:hover {
   position: absolute;
   top: 90px;
   left: 220px;
-  background-color: teal;
   width: 645px;
   height: 25px;
 }
@@ -672,7 +680,6 @@ input.submit:hover {
   position: absolute;
   top: 160px;
   left: 220px;
-  background-color: teal;
   width: 645px;
   height: 30px;
 }
@@ -680,7 +687,6 @@ input.submit:hover {
   position: absolute;
   top: 125px;
   left: 220px;
-  background-color: teal;
   width: 645px;
   height: 25px;
 }
@@ -689,7 +695,7 @@ input.submit:hover {
   height: 40px;
   display: flex;
   justify-content: space-evenly;
-  margin-left: 80px;
+  margin-left: 130px;
   margin-top: -10px;
   margin-bottom: 10px;
 }
@@ -700,6 +706,8 @@ input.submit:hover {
   border: solid white 1px;
   text-align: center;
   line-height: 40px;
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 #typesort {
   margin-left: 350px;
@@ -716,13 +724,13 @@ input.submit:hover {
   top: -10px;
   left: -8px;
   z-index: 1;
-  color: rgb(218, 45, 45)
+  color: rgb(218, 45, 45);
 }
 
 .tagnew {
   position: absolute;
   width: 60px;
-  height:60px;
+  height: 60px;
   color: #ededed;
   top: 0px;
   left: 0px;
@@ -739,3 +747,153 @@ input.submit:hover {
   color: rgb(39, 34, 34);
 }
 
+#imagechitiet {
+  max-width: 850px;
+  max-height: 900px;
+}
+
+.hm5 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#infoicon {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-size: 250px;
+}
+
+#infoall {
+  position: absolute;
+  top: 40px;
+  left: 330px;
+
+  width: 500px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#infoname {
+  width: 500px;
+  height: 80px;
+
+  font-size: 60px;
+}
+
+#infotype {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  padding-top: 10px;
+}
+#infomail {
+  width: 100%;
+  height: 60px;
+}
+
+#changepass {
+  height: 50px;
+  width: 250px;
+
+  font-size: 30px;
+  color: blue;
+}
+#changepass:hover {
+  text-decoration: underline;
+}
+
+.passs {
+  position: absolute;
+  top: 320px;
+  left: 380px;
+  height: fit-content;
+  width: 400px;
+  visibility: hidden;
+  background-color: gray;
+  padding: 20px;
+  box-shadow: 0px 0px 14px 0px grey;
+  z-index: 1;
+  border-radius: 10px;
+}
+#confirmcp {
+  display: flex;
+  justify-content: space-between;
+}
+#exitt {
+  color: white;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-size: 20px;
+}
+#okchange {
+  color: white;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-size: 20px;
+}
+#exitt:hover,
+#okchange:hover {
+  background-color: rgb(0, 110, 255);
+}
+
+/* #imagechititet {
+  
+/* info */
+.listt {
+  position: absolute;
+  top: 400px;
+  height: fit-content;
+  width: 90%;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.ltt {
+  color: black;
+  text-decoration: underline;
+  margin: 5px auto;
+}
+.ltt:hover {
+  color: blue;
+}
+.lisavemenu:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+#mymenu {
+  height: 50px;
+  padding: 10px;
+}
+#mycreat {
+  height: 50px;
+  padding: 10px;
+}
+
+#ulsave {
+  background-color: rgb(168, 166, 166);
+  width: 400px;
+  height: fit-content;
+  font-size: 20px;
+  line-height: 40px;
+  padding-left: 22px;
+}
+
+#ulcreat {
+  background-color: rgb(168, 166, 166);
+  width: 400px;
+  width: 400px;
+  height: fit-content;
+  font-size: 20px;
+  line-height: 40px;
+  padding-left: 22px;
+}

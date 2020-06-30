@@ -50,7 +50,7 @@ function onClickEvent() {
         email: inputEmail.value,
         type: "user",
       });
-      localStorage.setItem("account", `${JSON.stringify(account)}`);
+      localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
     }
   }
 

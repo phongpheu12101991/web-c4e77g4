@@ -17,7 +17,7 @@ for (let x of allfoods) {
     x.views++;
     monchitiet.innerHTML = `<div id="minifood">
 <h1 id='tenmonchitiet'>${x.foodname}</h1>
-<img src="${x.foodimage}" alt="x">
+<img src="${x.foodimage}" alt="x" id='imagechitiet'>
 <hr>
 <p>Lượt xem: ${x.views}</p>
 <div id=likedislike>

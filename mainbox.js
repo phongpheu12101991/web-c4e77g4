@@ -1,6 +1,69 @@
-// let cover = document.getElementById('coverpicture');
-// cover.innerHTML
+// let cover = document.getElementById(`cover-picture`);
+// cover.innerHTML= `<div
+// id="carouselExampleIndicators"
+// class="carousel slide"
+// data-ride="carousel"
+// >
+// <ol class="carousel-indicators">
+//   <li
+//     data-target="#carouselExampleIndicators"
+//     data-slide-to="0"
+//     class="active"
+//   ></li>
+//   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+//   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+// </ol>
+// <div class="carousel-inner">
+//   <div class="carousel-item active">
+//     <div
+//       class="img1"
+//       style="
+//         background: url('https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg');
+//       "
+//     ></div>
+//   </div>
+//   <div class="carousel-item">
+//     <div
+//       class="img2"
+//       style="
+//         background: url('https://wallpapercave.com/wp/wp3105346.jpg');
+//       "
+//     ></div>
+//   </div>
+//   <div class="carousel-item">
+//     <div
+//       class="img3"
+//       style="
+//         background: url('https://wallpapersmug.com/download/3840x2400/ddcbbf/food-pizza-baking.jpg');
+//       "
+//     ></div>
+//   </div>
+// </div>
+// <a
+//   class="carousel-control-prev"
+//   href="#carouselExampleIndicators"
+//   role="button"
+//   data-slide="prev"
+// >
+//   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//   <span class="sr-only">Previous</span>
+// </a>
+// <a
+//   class="carousel-control-next"
+//   href="#carouselExampleIndicators"
+//   role="button"
+//   data-slide="next"
+// >
+//   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//   <span class="sr-only">Next</span>
+// </a>
+// </div>`
 
+
+
+
+
+// 
 
 let taskbar = document.getElementById("taskbar");
 taskbar.innerHTML = `<div id="logo">
@@ -19,7 +82,7 @@ taskbar.innerHTML = `<div id="logo">
   />
 </div>
 </div>
-<div id="add">ADD</div>
+<div id="add">Thêm món mới</div>
 <div id="log-in"><p id='plogin'>LOG IN</p><i class="fas fa-bars" id='menulogin'></i>
 </div>
 <div id='logindrop'>
@@ -64,9 +127,9 @@ let nowuser = localStorage.getItem("logged");
 
 let plogin = document.getElementById("plogin");
 if (nowuser !== "") {
-  plogin.innerText = nowuser;
+  plogin.innerHTML = `<i class="fas fa-user-circle"></i> ${nowuser}`;
 } else {
-  plogin.innerText = "Log in";
+  plogin.innerText = "Đăng nhập";
 }
 
 function nologin() {

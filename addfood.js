@@ -1,4 +1,3 @@
-
 if (localStorage.getItem("saveallfoods") !== null) {
   allfoods = JSON.parse(localStorage.getItem("saveallfoods"));
   for (let x of allfoods) {
@@ -8,7 +7,6 @@ if (localStorage.getItem("saveallfoods") !== null) {
 if (localStorage.getItem("saveaccount") !== null) {
   account = JSON.parse(localStorage.getItem("saveaccount"));
 }
-
 
 //addnguyenlieu
 
@@ -118,5 +116,7 @@ function creatfood() {
   });
   console.log(allfoods[allfoods.length - 1]);
   localStorage.setItem("saveallfoods", `${JSON.stringify(allfoods)}`);
+  alert("Thêm món thành công");
+  location.href = "monchitiet.html";
+  localStorage.setItem("viewfood", `${allfoods.length - 1}`);
 }
-

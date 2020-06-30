@@ -332,6 +332,7 @@ function changetime() {
   hmsearch.innerHTML = "";
   searchresult();
   setbutton();
+  clicktochitiet();
 }
 
 function changeview() {
@@ -339,6 +340,7 @@ function changeview() {
   hmsearch.innerHTML = "";
   searchresult();
   setbutton();
+  clicktochitiet();
 }
 
 function changelike() {
@@ -346,9 +348,10 @@ function changelike() {
   hmsearch.innerHTML = "";
   searchresult();
   setbutton();
+  clicktochitiet();
 }
 
-document.querySelectorAll(".viewsearch").forEach((item) => {
+function clicktochitiet() {document.querySelectorAll(".viewsearch").forEach((item) => {
   item.addEventListener("click", (event) => {
     for (let x of allfoods) {
       if (x.foodname == item.id) {
@@ -358,3 +361,5 @@ document.querySelectorAll(".viewsearch").forEach((item) => {
     }
   });
 });
+}
+clicktochitiet();
