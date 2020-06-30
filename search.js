@@ -278,9 +278,10 @@ function searchresult() {
       }
     }
   }
+  console.log(allfoodscopy);
 }
 if (taskfindwhat == "" || taskfindwhat == null) {
-  allfoodscopy = allfoods;
+  allfoodscopy = [...allfoods];
   searchresult();
   setbutton();
 } else {
@@ -291,7 +292,7 @@ if (taskfindwhat == "" || taskfindwhat == null) {
         x.foodname.slice(i, i + taskfindwhat.length).toLowerCase() ==
         taskfindwhat
       ) {
-        let y = x;
+        let y = {...x};
         y.foodid = allfoodscopy.length;
         allfoodscopy.push(y);
       }
@@ -351,15 +352,18 @@ function changelike() {
   clicktochitiet();
 }
 
-function clicktochitiet() {document.querySelectorAll(".viewsearch").forEach((item) => {
-  item.addEventListener("click", (event) => {
-    for (let x of allfoods) {
-      if (x.foodname == item.id) {
-        location.href = "monchitiet.html";
-        localStorage.setItem("viewfood", `${x.foodid}`);
+function clicktochitiet() {
+  document.querySelectorAll(".viewsearch").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      for (let x of allfoods) {
+        if (x.foodname == item.id) {
+          location.href = "monchitiet.html";
+          localStorage.setItem("viewfood", `${x.foodid}`);
+          console.log(x.foodid);
+          console.log(allfoods);
+        }
       }
-    }
+    });
   });
-});
 }
 clicktochitiet();

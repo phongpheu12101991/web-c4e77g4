@@ -8,6 +8,8 @@ if (localStorage.getItem("saveaccount") !== null) {
   account = JSON.parse(localStorage.getItem("saveaccount"));
 }
 
+console.log(allfoods)
+console.log(account)
 let newimage1 = document.getElementById("newimage1");
 let newimage2 = document.getElementById("newimage2");
 let newimage3 = document.getElementById("newimage3");
@@ -85,6 +87,7 @@ function boxnewfood() {
     //tagsave
     for (let z of account) {
       if (z.username == nowuser) {
+        console.log(z.savemenu)
         if (z.savemenu.indexOf(thutu[x]) !== -1) {
           allminitagsave[x].classList = `fas fa-bookmark bm2`;
           allminitagsave[x].title = "Đã lưu";

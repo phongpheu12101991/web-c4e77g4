@@ -1,4 +1,5 @@
 // let nowuser = localStorage.getItem("logged");
+console.log(localStorage.getItem("viewfood"))
 
 if (localStorage.getItem("saveallfoods") !== null) {
   allfoods = JSON.parse(localStorage.getItem("saveallfoods"));

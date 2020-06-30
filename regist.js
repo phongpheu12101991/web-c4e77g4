@@ -49,6 +49,8 @@ function onClickEvent() {
         password: inputPassword.value,
         email: inputEmail.value,
         type: "user",
+        userid: account.length,
+        savemenu:[],
       });
       localStorage.setItem("saveaccount", `${JSON.stringify(account)}`);
     }
@@ -60,8 +62,6 @@ function onClickEvent() {
   inputPassword.value = "";
   inputPassword2.value = "";
 }
-
-
 
 function registenter(event) {
   if (event.keyCode === 13) {
